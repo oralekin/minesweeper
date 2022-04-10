@@ -1,110 +1,132 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap");
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 
-    font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+
+  font-size: 22px;
 }
 
-body, .app {
-    height: 100%;
-    width: 100%;
-
+body,
+.app {
+  height: 100%;
+  width: 100%;
 }
-
 
 .field {
-    height: 100%;
-    width: 100%;
+  height: 100%;
+  width: 100%;
 
-    display: grid;
+  display: grid;
 }
 
 .cell {
-    width: 100%;
-    height: 100%;
-    background-color: #BDBDBD;
+  width: 100%;
+  height: 100%;
+  background-color: #C7C7C7;
 
-    &.closed {
-        border-top:     solid #FFFFFF 6px;
-        border-left:    solid #FFFFFF 6px;
-        border-right:   solid #7B7B7B 6px;
-        border-bottom:  solid #7B7B7B 6px;
+  &.closed {
+    border-top: solid #F8F8F8 4px;
+    border-left: solid #F8F8F8 4px;
+    border-right: solid #939393 4px;
+    border-bottom: solid #939393 4px;
+  }
+
+  &.question {
+    color: black;
+  }
+
+  &.flag, &.mine {
+    &::before {
+      content: "";
+      display: block;
+      height: 55%;
+      width:  55%;
+      
+    }
+  }
+
+  &.flag {
+    &::before {
+      background-color: rgb(234, 23, 185);
+      -webkit-mask-image: url("./flag.svg");
+      mask-image: url("./flag.svg");
+    }
+  }
+
+  &.boom {
+    background-color: #EA3323;
+  }
+
+  
+  &.mine {
+    &::before {
+      height: 85%;
+      width:  85%;
+      background-image: url("./mine.svg");
+      background-color: black;
+    }
+  }
+
+
+
+  &.open {
+    border-top: solid #939393 2px;
+    border-left: solid #939393 2px;
+    border-right: none;
+    border-bottom: none;
+
+    &.one {
+      color: #0500F5;
     }
 
-    &.flag::before {
-        background-image: url("flag.svg");
-        color: white;
-        content:"";
-        display: block;
-        height: 42%;
-        width: 42%;
-
+    &.two {
+      color: #377E22;
     }
 
-    &.open {
-        
-        border-top:     solid #7B7B7B 2px;
-        border-left:    solid #7B7B7B 2px;
-        border-right:   none;
-        border-bottom:  none;
-
-
-
-        &.one {
-            color: blue;
-        }
-
-        &.two {
-            color: green;
-        }
-
-        &.three {
-            color: red;
-        }
-
-        &.four {
-            color: darkblue;
-        }
-
-        &.five {
-            color: maroon;
-        }
-
-        &.six {
-            color: teal;
-        }
-
-        &.seven {
-            color: black;
-        }
-
-        &.eight {
-            color: black;
-        }
-
-        &.zero {
-            font-size: 0;
-        }
+    &.three {
+      color: #EA3323;
     }
 
-    /* from http://howtocenterincss.com/ */
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    &.four {
+      color: darkblue;
+    }
 
+    &.five {
+      color: maroon;
+    }
 
-    /* from https://stackoverflow.com/a/6900392 */
-    -webkit-user-select: none; /* Safari */        
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* IE10+/Edge */
-    user-select: none; /* Standard */
+    &.six {
+      color: teal;
+    }
 
-    cursor: default;
+    &.seven {
+      color: black;
+    }
 
+    &.eight {
+      color: black;
+    }
+
+    &.zero {
+      font-size: 0;
+    }
+  }
+
+  /* from http://howtocenterincss.com/ */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* from https://stackoverflow.com/a/6900392 */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+
+  cursor: default;
 }
-
-
