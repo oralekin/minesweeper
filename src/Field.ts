@@ -1,7 +1,7 @@
 import seedrandom from "seedrandom";
 import Cell from "./Cell";
 import Naive from "./randomizers/Naive";
-console.log(seedrandom.alea)
+
 export default class Field {
     private width: number;
     private height: number;
@@ -31,8 +31,8 @@ export default class Field {
     private setUpGame(): void {
 
       this.fieldDiv.classList.add("field");
-      this.fieldDiv.style.gridTemplateRows = `repeat(${this.height}, 36px)`;
-      this.fieldDiv.style.gridTemplateColumns = `repeat(${this.width }, 36px)`
+      this.fieldDiv.style.gridTemplateRows = `repeat(${this.height}, 30px)`;
+      this.fieldDiv.style.gridTemplateColumns = `repeat(${this.width }, 30px)`
 
       const minelayer = new Naive("my seed", seedrandom.alea)
       const mines = minelayer.generateBoard(this.height, this.width, this.mines);
@@ -64,14 +64,19 @@ export default class Field {
 
     public cellOpened() {
       this._openCount++;
-      if (this.width * this.height - this.mines  === this.openCount) alert("game over!");
-    }
-
-    private openAll() {
-      this.cells.map(row => row.map(cell => cell.open()))
+      if (this.width * this.height - this.mines  === this.openCount) this.end();
     }
 
     die() {
+      // mark all mines that havent been found
+      this.cells.map(row => row.map(cell => {
+        cell.reveal();
+        cell.stopResponding();
+      }))
+      console.log()
+    }
+
+    end() {
       console.log()
     }
 
