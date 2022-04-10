@@ -5,7 +5,7 @@ console.log(seedrandom.alea)
 export default class Field {
     private width: number;
     private height: number;
-    private mines: number = 18;
+    private mines: number;
 
     private fieldDiv: HTMLDivElement;
 
@@ -13,12 +13,13 @@ export default class Field {
     private cells: Cell[][];
     private _openCount: number = 0;
 
-    constructor(width: number, height: number, fieldDiv: HTMLDivElement) {
+    constructor(width: number, height: number, mines: number, fieldDiv: HTMLDivElement) {
 
         this.fieldDiv = fieldDiv;
 
         this.width = width;
         this.height = height;
+        this.mines = mines;
 
         if (this.width < 1 || this.height < 1) throw new Error("we fucked up");
 
